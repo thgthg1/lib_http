@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript">
+        //支持IE10及以上
+        if(typeof FileReader == "undified") {
+            alert("浏览器不支持！");
+        }
+        function showDataByURL() {
+            var len = document.getElementById("fileDemo").files.length;
+            console.info(len);
+            var resultFile = document.getElementById("fileDemo").files;
+            console.info(resultFile);
+            for (var i = 0; i < len; i++) {
+                var reader = new FileReader();
+                reader.readAsDataURL(resultFile[i]);
+                reader.onload = function (e) {
+                    var urlData = this.result;
+                    imgdata=this.result;
+                    document.getElementById("result").innerHTML += "<img width='100px' height='100px' src='" + urlData + "' alt='" + resultFile.name + "' />";
+                };
+            }
+        }
+
+ 
+        function showDataByBinaryString() {
+              var resultFile = document.getElementById("fileDemo").files[0];
+            if (resultFile) {
+                var reader = new FileReader();
+                //异步方式
+				reader.onload = function(e) {
+                    var urlData = this.result;
+                    imgdata=this.result;
+                    document.getElementById("result").innerHTML += urlData;
+                };
+                reader.readAsBinaryString(resultFile);                
+            }
+        }
+ 
+ 
+        function showDataByText() {
+            var resultFile = document.getElementById("fileDemo").files[0];
+            if (resultFile) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var urlData = this.result;
+                    imgdata=this.result;
+                    document.getElementById("result").innerHTML += urlData;
+                };
+                reader.readAsText(resultFile,'gb2312');
+                
+            }
+        }
+         
+		 function readFile(){
+            var fileList = document.getElementById("fileDemo").files;
+            for (var i = 0; i < fileList.length; i++) {
+                if (!(/image\/\w+/.test(fileList[i].type))) {
+                     document.getElementById("result").innerHTML+="<br/><span>type:"+fileList[i].type+"--非图片类型--name:"+fileList[i].name+"--size:"+fileList[i].size+"</span>";
+                }
+                else {
+                    document.getElementById("result").innerHTML+="<br/><span>type:"+fileList[i].type+"--name:"+fileList[i].name+"--size:"+fileList[i].size+"</span>";
+                }
+            }
+		 }
+         var imgdata;
+         function loadXMLDoc(){
+	var xmlhttp;
+	if (window.XMLHttpRequest)
+	{
+		//  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+		xmlhttp=new XMLHttpRequest();
+	}
+	else
+	{
+		// IE6, IE5 浏览器执行代码
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function()
+	{
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+			//document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+		}
+	}
+	xmlhttp.open("POST","pic.zz",true);
+	xmlhttp.send(imgdata);
+}
+function sendPost()
+{
+    var xmlhttp;
+	if (window.XMLHttpRequest)
+	{
+		//  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+		xmlhttp=new XMLHttpRequest();
+	}
+	else
+	{
+		// IE6, IE5 浏览器执行代码
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function()
+	{
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+			document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+		}
+	}
+	xmlhttp.open("POST","get.zz",true);
+	xmlhttp.send("imgdata");
+}
+    </script>
+</head>
+<body>
+    <input type="file" onchange="showDataByURL()" name="fileDemo" id="fileDemo" multiple="multiple"/>
+    <input type="button" value="readAsDataURL" id="readAsDataURL" onclick="showDataByURL();"/>
+    <input type="button" value="readAsBinaryString"  id="readAsBinaryString" onclick="showDataByBinaryString();"/>
+    <input type="button" value="readAsText"  id="readAsText" onclick="showDataByText();"/>
+	<input type="button" value="readFile"  id="readFile" onclick="readFile();"/>
+    <div id="result">  
+    </div>
+    <div id="myDiv"><h2>使用 AJAX 修改该文本内容</h2></div>
+    <button type="button" onclick="loadXMLDoc()">修改内容</button>
+    <button type="button" onclick="sendPost()">send post</button>
+</body>
+</html>
