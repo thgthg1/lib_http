@@ -1,0 +1,5 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/thg/Documents/C++/lib_http/lib_http'
+g++ -std=c++11 server.cpp handle.cpp `pkg-config --libs --cflags opencv` -o server -levent
+make: Leaving directory '/home/thg/Documents/C++/lib_http/lib_http'
+ 
