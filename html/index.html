@@ -81,7 +81,8 @@
 	{
 		if (xmlhttp.readyState==4 && xmlhttp.status==200)
 		{
-			//document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+			document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+            document.getElementById("pic").src="http://127.0.0.1:8000/savePic/out1.jpg";
 		}
 	}
 	xmlhttp.open("POST","pic.zz",true);
@@ -124,6 +125,6 @@ function sendPost()
     <button type="button" onclick="loadXMLDoc()">修改内容</button>
     <button type="button" onclick="sendPost()">send post</button>
     <div> </div>
-    <img src="savePic/out1.jpg">
+    <img id="pic" src="savePic/out1.jpg">
 </body>
 </html>

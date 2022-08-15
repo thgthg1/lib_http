@@ -92,6 +92,7 @@ void http_cb(struct evhttp_request *request, void *arg){
 	}else if(file_type == "zz"){//为了知道是POST请求，我将后缀识别为.zz类型
 		//这里表示是POST请求
 		handl.Select_Order(uri);
+		cout<<"respioonese"<<endl;
 		evhttp_add_header(outhead, "Content-Type", "application/html");
 		evbuffer *outbuf = evhttp_request_get_output_buffer(request); //返回的body
 		string json = "{\"res\":100,\"text\":\"OK\",\"data\":null}"; //模拟json数据

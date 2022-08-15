@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <fstream>
 #include <map>
+#include "mydata.h"
 using namespace std;
 static const string base64_chars =
 "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -15,7 +16,7 @@ class HttpHandle
 {
 private:
     /* data */
-     
+     mydata data;
    
 public:
 //string base64_chars ="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";

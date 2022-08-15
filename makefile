@@ -1,2 +1,2 @@
-server:server.cpp handle.cpp
-	g++ -std=c++11 $^ `pkg-config --libs --cflags opencv` -o $@ -levent
+server:server.cpp handle.cpp mydata.cpp
+	g++ -std=c++11 $^ `mysql_config --cflags --libs`  -o $@ -levent

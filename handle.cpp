@@ -3,10 +3,12 @@
 #include <unistd.h>
 #include "handle.h"
 
+
 string base64_decode(string const & encoded_string);
 
 HttpHandle::HttpHandle(/* args */)
 {
+    data.InitDB("localhost","root","123","qgydb");
 }
 
 HttpHandle::~HttpHandle()
@@ -50,6 +52,7 @@ void HttpHandle::save_txt(char* buff, size_t n)
 
 void HttpHandle::write_img()
 {
+    cout<<"write img"<<endl;
 	fstream f2;
     ifstream file("base.txt");
     string content((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
@@ -57,8 +60,9 @@ void HttpHandle::write_img()
 	content=content.substr(index,content.length());
     string imgdecode64 = base64_decode(content);
 	f2.open("savePic/out1.jpg", ios::out | ios::binary);
-    f2 << imgdecode64;
+    f2 << imgdecode64;   
     f2.close();
+    
 }
 
 string base64_decode(string const & encoded_string)

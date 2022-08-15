@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Aug 11 19:28:33 2022
+# Make data base, printed on Mon Aug 15 06:57:58 2022
 
 # Variables
 
@@ -61,7 +61,7 @@ MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
 # environment
 XDG_DATA_DIRS = /usr/share/ubuntu:/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop:/var/lib/snapd/desktop
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:abstract=/tmp/dbus-9NSlJ08f7v
+DBUS_SESSION_BUS_ADDRESS = unix:abstract=/tmp/dbus-QZSXQlfdrX
 # environment
 CLUTTER_IM_MODULE = xim
 # environment
@@ -81,8 +81,6 @@ XDG_RUNTIME_DIR = /run/user/1000
 # environment
 LIBRARY_PATH = :/usr/local/protobuf/lib:/usr/local/protobuf/lib
 # environment
-XDG_MENU_PREFIX = gnome-
-# environment
 ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
@@ -99,7 +97,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 2442
+GIO_LAUNCHED_DESKTOP_FILE_PID = 2250
 # automatic
 %F = $(notdir $%)
 # environment
@@ -135,7 +133,7 @@ LOGNAME = thg
 # environment
 QT_LINUX_ACCESSIBILITY_ALWAYS_ON = 1
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -211,7 +209,7 @@ DEFAULTS_PATH = /usr/share/gconf/ubuntu.default.path
 # default
 MAKEFILES := 
 # environment
-UPSTART_SESSION = unix:abstract=/com/ubuntu/upstart-session/1000/1742
+UPSTART_SESSION = unix:abstract=/com/ubuntu/upstart-session/1000/1649
 # automatic
 <F = $(notdir $<)
 # environment
@@ -233,9 +231,9 @@ CHROME_DESKTOP = code-url-handler.desktop
 # environment
 LANG = C
 # environment
-VSCODE_PID = 2442
+VSCODE_PID = 2250
 # variable set hash-table stats:
-# Load=111/1024=11%, Rehash=0, Collisions=9/136=7%
+# Load=110/1024=11%, Rehash=0, Collisions=9/135=7%
 
 # Pattern-specific Variable Values
 
@@ -254,32 +252,38 @@ VSCODE_PID = 2442
 # Files
 
 # Not a target:
+mydata.cpp:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 all:
 #  Command line target.
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has not been updated.
 
-server: server.cpp handle.cpp
+server: server.cpp handle.cpp mydata.cpp
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'makefile', line 2):
-	g++ -std=c++11 $^ `pkg-config --libs --cflags opencv` -o $@ -levent
+	g++ -std=c++11 $^ `mysql_config --cflags --libs`  -o $@ -levent
 
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-11 06:29:21.621992984
+#  Last modified 2022-08-15 06:57:02.423213148
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
+ 
 .DEFAULT:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
- 
 
 # Not a target:
 server.cpp:
@@ -294,19 +298,19 @@ handle.cpp:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=7/1024=1%, Rehash=0, Collisions=0/19=0%
+# Load=8/1024=1%, Rehash=0, Collisions=0/21=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 18 / storage = 151 B / avg = 8 B
-# current buf: size = 8162 B / used = 151 B / count = 18 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 19 / storage = 162 B / avg = 8 B
+# current buf: size = 8162 B / used = 162 B / count = 19 / avg = 8 B
 
-# strcache performance: lookups = 26 / hit rate = 30%
+# strcache performance: lookups = 27 / hit rate = 29%
 # hash-table stats:
-# Load=18/8192=0%, Rehash=0, Collisions=1/26=4%
-# Finished Make data base on Thu Aug 11 19:28:33 2022
+# Load=19/8192=0%, Rehash=0, Collisions=1/27=4%
+# Finished Make data base on Mon Aug 15 06:57:58 2022
 
  
