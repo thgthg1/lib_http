@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Aug 15 06:57:58 2022
+# Make data base, printed on Tue Aug 16 04:51:59 2022
 
 # Variables
 
@@ -61,7 +61,7 @@ MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
 # environment
 XDG_DATA_DIRS = /usr/share/ubuntu:/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop:/var/lib/snapd/desktop
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:abstract=/tmp/dbus-QZSXQlfdrX
+DBUS_SESSION_BUS_ADDRESS = unix:abstract=/tmp/dbus-GjY6mC3j9k
 # environment
 CLUTTER_IM_MODULE = xim
 # environment
@@ -73,7 +73,7 @@ XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/thg/bin:/home/thg/.local/bin:/home/thg/bin:/home/thg/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/protobuf/bin:/snap/bin:/usr/local/protobuf/bin
+PATH = /home/thg/bin:/home/thg/.local/bin:/home/thg/bin:/home/thg/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/protobuf/bin:/snap/bin:/home/thg/home/thg/Documents/software/cmake:/usr/local/protobuf/bin:/home/thg/home/thg/Documents/software/cmake
 # environment
 GPG_AGENT_INFO = /home/thg/.gnupg/S.gpg-agent:0:1
 # environment
@@ -97,7 +97,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 2250
+GIO_LAUNCHED_DESKTOP_FILE_PID = 2296
 # automatic
 %F = $(notdir $%)
 # environment
@@ -133,7 +133,7 @@ LOGNAME = thg
 # environment
 QT_LINUX_ACCESSIBILITY_ALWAYS_ON = 1
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -209,7 +209,7 @@ DEFAULTS_PATH = /usr/share/gconf/ubuntu.default.path
 # default
 MAKEFILES := 
 # environment
-UPSTART_SESSION = unix:abstract=/com/ubuntu/upstart-session/1000/1649
+UPSTART_SESSION = unix:abstract=/com/ubuntu/upstart-session/1000/1674
 # automatic
 <F = $(notdir $<)
 # environment
@@ -231,7 +231,7 @@ CHROME_DESKTOP = code-url-handler.desktop
 # environment
 LANG = C
 # environment
-VSCODE_PID = 2250
+VSCODE_PID = 2296
 # variable set hash-table stats:
 # Load=110/1024=11%, Rehash=0, Collisions=9/135=7%
 
@@ -241,9 +241,9 @@ VSCODE_PID = 2250
 
 # Directories
 
-# . (device 2049, inode 670674): 13 files, no impossibilities.
+# . (device 2049, inode 670674): 15 files, no impossibilities.
 
-# 13 files, no impossibilities in 1 directories.
+# 15 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -269,12 +269,12 @@ server: server.cpp handle.cpp mydata.cpp
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'makefile', line 2):
-	g++ -std=c++11 $^ `mysql_config --cflags --libs`  -o $@ -levent
+	g++ -std=c++11 $^ `mysql_config --cflags --libs`  -o $@ -levent  -ljsoncpp
 
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-15 06:57:02.423213148
+#  Last modified 2022-08-16 02:06:42.380892756
 #  File has been updated.
 #  Successfully updated.
 
@@ -305,12 +305,12 @@ handle.cpp:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 19 / storage = 162 B / avg = 8 B
-# current buf: size = 8162 B / used = 162 B / count = 19 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 20 / storage = 171 B / avg = 8 B
+# current buf: size = 8162 B / used = 171 B / count = 20 / avg = 8 B
 
-# strcache performance: lookups = 27 / hit rate = 29%
+# strcache performance: lookups = 29 / hit rate = 31%
 # hash-table stats:
-# Load=19/8192=0%, Rehash=0, Collisions=1/27=4%
-# Finished Make data base on Mon Aug 15 06:57:58 2022
+# Load=20/8192=0%, Rehash=0, Collisions=1/29=3%
+# Finished Make data base on Tue Aug 16 04:51:59 2022
 
  

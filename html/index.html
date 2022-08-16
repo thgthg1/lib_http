@@ -105,11 +105,17 @@ function sendPost()
 	{
 		if (xmlhttp.readyState==4 && xmlhttp.status==200)
 		{
-			document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+            var response=JSON.parse(xmlhttp.responseText);
+			document.getElementById("myDiv").innerHTML=response.res;
+            if(response.res==100)
+            {
+                window.location="html/test.html";
+            }
+            
 		}
 	}
-	xmlhttp.open("POST","get.zz",true);
-	xmlhttp.send("imgdata");
+	xmlhttp.open("POST","test.zz",true);
+	xmlhttp.send("A");
 }
     </script>
 </head>

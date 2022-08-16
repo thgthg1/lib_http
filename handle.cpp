@@ -8,11 +8,54 @@ string base64_decode(string const & encoded_string);
 
 HttpHandle::HttpHandle(/* args */)
 {
-    data.InitDB("localhost","root","123","qgydb");
+    data.InitDB("localhost","root","123","user");
+    
 }
 
 HttpHandle::~HttpHandle()
 {
+}
+void HttpHandle::Json_test(const char* str)
+{
+    Json::Reader read;
+    Json::Value root;
+    string order;
+    string name;
+    string passwd;
+    if (read.parse(str, root))
+    {
+        order = root["order"].asString();
+        name = root["name"].asString();
+        passwd = root["passwd"].asString();
+        cout<<order+"," << name + "," << passwd << "," << endl;
+    }
+    if(order=="register")
+    {
+        if(!data.SearchName(name))
+        {
+            string sql="insert into register(name,passwd) values ('"+name+"','"+passwd+"');";
+            cout<<sql<<endl;
+            data.ExeSQL(sql.c_str());
+            Response_json="{\"res\":10,\"text\":\"OK\"}";//zhuc success
+        }
+        else
+        {
+            /* code */
+            Response_json="{\"res\":11,\"text\":\"OK\"}";//zhuc fail
+        }
+        
+    }
+    else if(order=="log")
+    {
+        if(data.UserLog(name,passwd))
+        {
+            Response_json="{\"res\":20,\"text\":\"OK\"}";//log success
+        }
+        else
+        {
+            Response_json="{\"res\":21,\"text\":\"OK\"}";//log fail
+        }
+    }
 }
 
 
@@ -31,7 +74,7 @@ void HttpHandle::Select_Order(string uri)
         write_img();
         break;
     case 2:
-        cout<<"test"<<endl;
+        Json_test(POST_BUF.c_str());
         break;
     default:
         break;

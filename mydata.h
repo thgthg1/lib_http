@@ -16,7 +16,11 @@ public:
     mydata(/* args */);
     ~mydata();
     bool InitDB(string host,string user,string pwd,string dbname);
-    bool ExeSQL(string sql);
+    void CreateTable(string table_name);
+    void InsertUser(string sql);
+    bool SearchName(string name);
+    bool UserLog(string name, string passwd);
+    bool ExeSQL(const char* sql);
 };
 
 

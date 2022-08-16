@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <p>test</p>
+    <input id="name" type="text">
+    <br>
+    <input id="passwd" type="text">
+    <br>
+    <button onclick="sendPost(0)">register</button>
+    <br>
+    <p>denglu</p>
+    <input id="name1" type="text">
+    <br>
+    <input id="passwd1" type="text">
+    <br>
+    <button onclick="sendPost(1)">log</button>
+</body>
+<script>
+    function sendPost(num)
+{
+    var xmlhttp;
+    var name;
+    var passwd;
+	if (window.XMLHttpRequest)
+	{
+		xmlhttp=new XMLHttpRequest();
+	}
+	else
+	{
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function()
+	{
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+            var response=JSON.parse(xmlhttp.responseText);
+            if(response.res==11)
+            {
+                //window.location="html/test.html";
+                alert("register name is error ");
+            }
+            else if(response.res==10)
+            {
+                alert("register is success ");
+            }
+            else if(response.res==20)
+            {
+                alert("log is success ");
+            }
+            else if(response.res==21)
+            {
+                alert("log is fail ");
+            }
+            
+		}
+	}
+    xmlhttp.open("POST","test.zz",true);
+    if(num==0)
+    {
+        name=document.getElementById("name");
+        passwd=document.getElementById("passwd");
+        name=name.value;
+        passwd=passwd.value;
+        var str={"order":"register","name":name,"passwd":passwd};
+        xmlhttp.send(JSON.stringify(str));
+    }
+    else if(num==1)
+    {
+        name=document.getElementById("name1");
+        passwd=document.getElementById("passwd1");
+        name=name.value;
+        passwd=passwd.value;
+        var str={"order":"log","name":name,"passwd":passwd};
+        xmlhttp.send(JSON.stringify(str));
+    }
+	
+}
+</script>
+</html>
