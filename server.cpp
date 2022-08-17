@@ -18,7 +18,7 @@
 using namespace std;
 
 #define WEBROOT "./html" //设置万战根目录
-#define DEFAULTINDEX "html/index.html" //这个是默认请求的文件（当只输入域名时）
+#define DEFAULTINDEX "/index.html" //这个是默认请求的文件（当只输入域名时）
 #define FILE_NAME "server_info"
 
 HttpHandle handl;
