@@ -18,16 +18,16 @@
 using namespace std;
 
 #define WEBROOT "./html" //设置万战根目录
-#define DEFAULTINDEX "/index.html" //这个是默认请求的文件（当只输入域名时）
+#define DEFAULTINDEX "/lock.html" //这个是默认请求的文件（当只输入域名时）
 #define FILE_NAME "server_info"
 
 HttpHandle handl;
 
 void http_cb(struct evhttp_request *request, void *arg)
 {
-	cout << "http_cb" << endl;
+	//cout << "http_cb" << endl;
 	const char *uri = evhttp_request_get_uri(request);
-	cout << "uri:" << uri << endl;
+	//cout << "uri:" << uri << endl;
 	string cmdtype;
 	switch (evhttp_request_get_command(request)){
 		case EVHTTP_REQ_GET:
@@ -37,28 +37,29 @@ void http_cb(struct evhttp_request *request, void *arg)
 			cmdtype = "POST";
 			break;
 	}
-	cout << "cmdtype(请求类型):" << cmdtype << endl;
+	//cout << "cmdtype(请求类型):" << cmdtype << endl;
 	evkeyvalq *headers = evhttp_request_get_input_headers(request);
+	/*
 	cout << "************请求头数据************" << endl;
 	for (evkeyval *p = headers->tqh_first; p != NULL; p = p->next.tqe_next){
 		cout << p->key << ":" << p->value << endl;
 	}
-	cout<<"**********************************"<<endl;
+	cout<<"**********************************"<<endl;*/
 	evbuffer *inbuf = evhttp_request_get_input_buffer(request);
 	char buf[4096];
 	char str[2048]={0};
 	remove("base.txt");
-	cout<<"========获取POST请求数据(GET请求没有数据)========"<<endl;
+	//cout<<"========获取POST请求数据(GET请求没有数据)========"<<endl;
 	while (evbuffer_get_length(inbuf)){
 		int n = evbuffer_remove(inbuf, buf, sizeof(buf) - 1);
 		if (n > 0){
 			buf[n] = '\0';
-			cout << buf << endl;
+			//cout << buf << endl;
 		}
 		handl.POST_BUF=buf;
 		handl.save_txt(buf,n);
 	}
-	cout<<"=================================="<<endl<<endl<<endl;
+	//cout<<"=================================="<<endl<<endl<<endl;
 	string filepath = WEBROOT;
 	filepath += uri;
 	if (strcmp(uri, "/") == 0)
@@ -80,11 +81,11 @@ void http_cb(struct evhttp_request *request, void *arg)
 	}else if(file_type == "zz")
 	{
 		handl.Select_Order(uri);
-		cout<<"respioonese"<<endl;
+		//cout<<"respioonese"<<endl;
 		evhttp_add_header(outhead, "Content-Type", "application/html");
 		evbuffer *outbuf = evhttp_request_get_output_buffer(request); //返回的body
 		//string json = "{\"res\":10,\"text\":\"OK\",\"data\":null}"; //模拟json数据
-		cout<<handl.Response_json<<endl;
+		//cout<<handl.Response_json<<endl;
 		evbuffer_add(outbuf, handl.Response_json.c_str(), handl.Response_json.length());
 		evhttp_send_reply(request, HTTP_OK, "", outbuf);
 		return;
