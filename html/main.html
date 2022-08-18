@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">  
 	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/log.js"></script>
 	<style>
     .fakeimg {
         height: 200px;
@@ -44,7 +45,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-4">
-      <h2>  关于我</h2>
+      <p id="main_name"></p>
       <div >
         <img src="pic/head1.png" class="img-responsive" alt="Cinque Terre" width="304" height="236">
       </div>
@@ -76,5 +77,8 @@
 <div class="jumbotron text-center" style="margin-bottom:0">
   <p>底部内容</p>
 </div>
+<script>
+    document.getElementById("main_name").innerHTML="用户名:"+getCookie("name");
+</script>
 </body>
 </html>

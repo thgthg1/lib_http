@@ -40,7 +40,7 @@ bool mydata::ExeSQL(const char* sql)
 	{
         cout << "error!" << endl;
     } else {
-        cout << "sql success!" << endl;
+        //cout << "sql success!" << endl;
     }
 }
 void mydata::CreateTable(string table_name)
@@ -73,12 +73,12 @@ bool mydata::SearchName(string name)
 	if(num_rows>0)
 	{
 		b=true;
-		cout<<"search "<<name<<" ok"<<endl;
+		//cout<<"search "<<name<<" ok"<<endl;
 	}
 	else
 	{
 		b=false;
-		cout<<name<<"is don't have"<<endl;
+		//cout<<name<<"is don't have"<<endl;
 	}
 	
 	cout<<num_rows<<endl;

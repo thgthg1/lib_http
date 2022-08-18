@@ -3,9 +3,12 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
 	    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script charset="gb2312" language="javascript" type="text/javascript" src="ntkoocx.js"></script>
+        <script src="js/log.js"></script>
         <title>登录</title>
         <style>
             .div1{
@@ -15,20 +18,19 @@
         </style>
     <head>
     <body>
-        <form>
+        <div>
             <div class="div1 form-group">
                 <label for="username">帐号：</label>
-                <!--样式form-control会让input元素宽度为父容器100%-->
-                <input type="text" class="form-control" id="username" placeholder="请输入帐号" />
+                <input type="text" class="form-control" id="name1" placeholder="请输入帐号" />
             </div>
             <div class="div1 form-group">
                 <label for="password">密码：</label>
-                <input type="password" class="form-control" id="password" placeholder="请输入密码" />
+                <input type="password" class="form-control" id="passwd1" placeholder="请输入密码" />
             </div>
             <div class="div1">
-                <button type="submit" class="btn btn-primary btn-sm">登录</button>
+                <button onclick="sendPost(1)" class="btn btn-primary btn-sm">登录</button>
             </div>
-        </form>
+        </div>
     </body>
     
 </html>

@@ -22,19 +22,21 @@ void HttpHandle::Json_test(const char* str)
     string order;
     string name;
     string passwd;
+    string email;
     if (read.parse(str, root))
     {
         order = root["order"].asString();
         name = root["name"].asString();
         passwd = root["passwd"].asString();
-        cout<<order+"," << name + "," << passwd << "," << endl;
+        email=root["email"].asString();
+        //cout<<order+"," << name + "," << passwd << "," << endl;
     }
     if(order=="register")
     {
         if(!data.SearchName(name))
         {
-            string sql="insert into register(name,passwd) values ('"+name+"','"+passwd+"');";
-            cout<<sql<<endl;
+            string sql="insert into register(name,passwd,email) values ('"+name+"','"+passwd+"','"+email+"');";
+            //cout<<sql<<endl;
             data.ExeSQL(sql.c_str());
             Response_json="{\"res\":10,\"text\":\"OK\"}";//zhuc success
         }
@@ -70,7 +72,7 @@ void HttpHandle::Select_Order(string uri)
     switch (val)
     {
     case 1:
-        cout<<"save pic"<<endl;
+        //cout<<"save pic"<<endl;
         write_img();
         break;
     case 2:
