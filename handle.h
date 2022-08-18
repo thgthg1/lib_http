@@ -8,6 +8,7 @@
 #include "mydata.h"
 #include "json/json.h"
 using namespace std;
+using namespace Json;
 static const string base64_chars =
 "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 "abcdefghijklmnopqrstuvwxyz"
@@ -28,7 +29,8 @@ public:
     void Select_Order(string uri);
     void save_txt(char* buff, size_t n);
     void write_img();
-    void Json_test(const char* str);
+    void Json_handle(const char* str);
+    void Json_test();
 
     static inline bool is_base64(const char c)
     {

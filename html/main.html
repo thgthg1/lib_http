@@ -56,6 +56,15 @@
         <li><a href="https://www.figma.com/file/TVx6SEXwz9uhDCTKBdqjIV/%E4%B9%90%E5%AE%A0%E6%98%A5?node-id=0%3A1">Figma 地址</a></li>
         <li><a href="#">Github </a></li>
       </ul>
+      <h4> 留言 </h4>
+      <div>
+        <input type="text" id="chat_content">
+        <button onclick="SendChat()">发布</button>
+      </div>
+      <h4> 用户留言 </h4>
+      <button onclick="GetChat()">get chat</button>
+      <div id="chat">
+      </div>
       <hr class="hidden-sm hidden-md hidden-lg">
     </div>
     <div class="col-sm-8">
@@ -78,7 +87,81 @@
   <p>底部内容</p>
 </div>
 <script>
-    document.getElementById("main_name").innerHTML="用户名:"+getCookie("name");
+  var user_name;
+  MainInit();
+  function addChat(content)
+  {
+    var div=document.getElementById("chat");
+    var p = document.createElement('p');
+    p.innerHTML=content;
+    div.appendChild(p);
+  }
+  function MainInit()
+  {
+    user_name=document.getElementById("main_name").innerHTML=getCookie("name");
+    if(user_name=="")
+    {
+      alert("please log");
+    }
+  }
+  function SendChat()
+  {
+    var xmlhttp;
+    var name;
+    var content=document.getElementById("chat_content").value;
+    if (window.XMLHttpRequest)
+    {
+      xmlhttp=new XMLHttpRequest();
+    }
+    else
+    {
+      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function()
+    {
+      if (xmlhttp.readyState==4 && xmlhttp.status==200)
+      {
+      }
+    }
+    xmlhttp.open("POST","test.zz",true);
+    var str={"order":"chat0","name":user_name,"content":content};
+    xmlhttp.send(JSON.stringify(str));
+  }
+  function GetChat()
+  {
+    var xmlhttp;
+    var name;
+    var passwd;
+    var email;
+    if (window.XMLHttpRequest)
+    {
+      xmlhttp=new XMLHttpRequest();
+    }
+    else
+    {
+      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function()
+    {
+      if (xmlhttp.readyState==4 && xmlhttp.status==200)
+      {
+        addChat(xmlhttp.responseText);
+        var response=JSON.parse(xmlhttp.responseText);
+        var obj=response.text;
+        for(var i in obj)
+          {
+            addChat("name:"+obj[i].name);
+            addChat("time:"+obj[i].time);
+            addChat("chat:"+obj[i].chat);
+          }
+
+      }
+    }
+    xmlhttp.open("POST","test.zz",true);
+    var str={"order":"chat","name":user_name};
+    xmlhttp.send(JSON.stringify(str));
+  }
+
 </script>
 </body>
 </html>

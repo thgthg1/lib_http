@@ -9,13 +9,12 @@ string base64_decode(string const & encoded_string);
 HttpHandle::HttpHandle(/* args */)
 {
     data.InitDB("localhost","root","123","user");
-    
 }
 
 HttpHandle::~HttpHandle()
 {
 }
-void HttpHandle::Json_test(const char* str)
+void HttpHandle::Json_handle(const char* str)
 {
     Json::Reader read;
     Json::Value root;
@@ -23,19 +22,21 @@ void HttpHandle::Json_test(const char* str)
     string name;
     string passwd;
     string email;
+    string chat_content;
     if (read.parse(str, root))
     {
         order = root["order"].asString();
         name = root["name"].asString();
         passwd = root["passwd"].asString();
         email=root["email"].asString();
+        chat_content=root["content"].asString();
         //cout<<order+"," << name + "," << passwd << "," << endl;
     }
     if(order=="register")
     {
         if(!data.SearchName(name))
         {
-            string sql="insert into register(name,passwd,email) values ('"+name+"','"+passwd+"','"+email+"');";
+            string sql="insert into register(name,passwd,email,time) values ('"+name+"','"+passwd+"','"+email+"','"+data.Systime()+"');";
             //cout<<sql<<endl;
             data.ExeSQL(sql.c_str());
             Response_json="{\"res\":10,\"text\":\"OK\"}";//zhuc success
@@ -58,6 +59,30 @@ void HttpHandle::Json_test(const char* str)
             Response_json="{\"res\":21,\"text\":\"OK\"}";//log fail
         }
     }
+    else if(order=="chat")
+    {
+        data.Search_Chat(name);
+        int l=data.content.size();
+        l--;
+        Response_json="{\"res\":\"30\",\"text\":[";
+        for(int i=0;i<data.content.size();i++)
+        {   
+            Response_json+="{\"name\":\""+data.content[i][0]+"\",";
+            Response_json+="\"time\":\""+data.content[i][1]+"\",";
+            Response_json+="\"chat\":\""+data.content[i][2]+"\"}";
+            if(i!=l)
+            {
+                Response_json+=",";
+            }
+        }
+        Response_json+="]}";
+        cout<<"chat:"<<Response_json<<endl;
+    }
+    else if(order=="chat0")
+    {
+        data.Save_Chat(name,data.Systime(),chat_content);
+    }
+    
 }
 
 
@@ -76,7 +101,7 @@ void HttpHandle::Select_Order(string uri)
         write_img();
         break;
     case 2:
-        Json_test(POST_BUF.c_str());
+        Json_handle(POST_BUF.c_str());
         break;
     default:
         break;

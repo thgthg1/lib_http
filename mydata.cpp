@@ -38,10 +38,8 @@ bool mydata::ExeSQL(const char* sql)
 	int ret = mysql_query(mysql, sql);
     if (ret) 
 	{
-        cout << "error!" << endl;
-    } else {
-        //cout << "sql success!" << endl;
-    }
+        cout << "ExeSQL error!" << endl;
+    } 
 }
 void mydata::CreateTable(string table_name)
 {
@@ -112,4 +110,50 @@ bool mydata::UserLog(string name, string passwd)
 void mydata::InsertUser(string sql)
 {
 	ExeSQL(sql.c_str());
+}
+bool mydata::Save_Chat(string name,string time,string content)
+{
+	string sql="insert into chat (name,time,content) value('"+name+"','"+time+"','"+content+"');";
+	//cout<<sql<<endl;
+	ExeSQL(sql.c_str());
+}
+void mydata::Search_Chat(string name)
+{
+	content.clear();
+	string sql="select * from chat where name='"+name+"';";
+	mysql_query(mysql, sql.c_str());
+	result=mysql_store_result(mysql);
+	if (!result)
+    {
+        printf("Search_Chat SQL语句执行无有结果: %s\n", mysql_error(mysql));                        
+    }
+	else
+	{
+		int num_fields = mysql_num_fields(result);
+		int  num_rows=mysql_num_rows(result); 
+		cout<<num_rows<<endl;
+		cout<<num_fields<<endl;
+        for(int i=0;i<num_rows;i++)
+		{
+			vector<string> single;
+            row = mysql_fetch_row(result);
+            for(int j=0;j<num_fields;j++)
+			{
+				single.push_back(row[j]);
+                //cout<<row[j]<<"\t";                 
+            }
+			//cout<<endl;
+			content.push_back(single);
+		}
+	}
+}
+string mydata::Systime()
+{
+	time_t timeReal;
+	time(&timeReal);
+	timeReal = timeReal + 8*3600;
+	tm* t = gmtime(&timeReal); 
+	string syst=to_string(t->tm_year)+"-"+to_string(t->tm_mon)+"-"+to_string(t->tm_mday)
+	+" "+to_string(t->tm_hour)+":"+to_string(t->tm_min)+":"+to_string(t->tm_sec)+"\n";
+	return syst;
 }
