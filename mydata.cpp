@@ -153,7 +153,7 @@ string mydata::Systime()
 	time(&timeReal);
 	timeReal = timeReal + 8*3600;
 	tm* t = gmtime(&timeReal); 
-	string syst=to_string(t->tm_year)+"-"+to_string(t->tm_mon)+"-"+to_string(t->tm_mday)
-	+" "+to_string(t->tm_hour)+":"+to_string(t->tm_min)+":"+to_string(t->tm_sec)+"\n";
+	string syst=to_string(t->tm_year+1900)+"-"+to_string(t->tm_mon+1)+"-"+to_string(t->tm_mday)
+	+" "+to_string(t->tm_hour)+":"+to_string(t->tm_min)+":"+to_string(t->tm_sec);
 	return syst;
 }

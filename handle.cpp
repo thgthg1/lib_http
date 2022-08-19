@@ -64,7 +64,7 @@ void HttpHandle::Json_handle(const char* str)
         data.Search_Chat(name);
         int l=data.content.size();
         l--;
-        Response_json="{\"res\":\"30\",\"text\":[";
+        Response_json="[";
         for(int i=0;i<data.content.size();i++)
         {   
             Response_json+="{\"name\":\""+data.content[i][0]+"\",";
@@ -75,7 +75,7 @@ void HttpHandle::Json_handle(const char* str)
                 Response_json+=",";
             }
         }
-        Response_json+="]}";
+        Response_json+="]";
         cout<<"chat:"<<Response_json<<endl;
     }
     else if(order=="chat0")

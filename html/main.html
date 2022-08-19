@@ -45,24 +45,26 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-4">
-      <p id="main_name"></p>
       <div >
-        <img src="pic/head1.png" class="img-responsive" alt="Cinque Terre" width="304" height="236">
+        <img id="person_head" src="pic/head1.png" class="img-responsive" alt="Cinque Terre" width="304" height="236">
       </div>
-      <p>关于我的介绍..</p>
+      <br>
+      <p id="main_name" style="text-align: center;"></p>
       <h3>链接</h3>
       <!--<p>描述文本。</p>-->
       <ul class="nav nav-pills nav-stacked">
         <li><a href="https://www.figma.com/file/TVx6SEXwz9uhDCTKBdqjIV/%E4%B9%90%E5%AE%A0%E6%98%A5?node-id=0%3A1">Figma 地址</a></li>
         <li><a href="#">Github </a></li>
       </ul>
-      <h4> 留言 </h4>
-      <div>
-        <input type="text" id="chat_content">
+      <div class="div1 form-group">
+        <label for="username">留言</label>
+        <input type="text" class="form-control" id="chat_content" placeholder="请输入" />
+      </div>
+      <div class="div1">
         <button onclick="SendChat()">发布</button>
+        <button onclick="GetChat()">刷新</button>
       </div>
       <h4> 用户留言 </h4>
-      <button onclick="GetChat()">get chat</button>
       <div id="chat">
       </div>
       <hr class="hidden-sm hidden-md hidden-lg">
@@ -88,27 +90,37 @@
 </div>
 <script>
   var user_name;
+  var chat_num=0;
   MainInit();
   function addChat(content)
   {
     var div=document.getElementById("chat");
-    var p = document.createElement('p');
-    p.innerHTML=content;
+    var p = document.createElement('div');
+    p.className="panel panel-default";
+    p.innerHTML='<div class="panel-body"> '+content+'</div>';
     div.appendChild(p);
   }
   function MainInit()
   {
-    user_name=document.getElementById("main_name").innerHTML=getCookie("name");
+    user_name=getCookie("name");
+    document.getElementById("main_name").innerHTML="用户名: "+user_name;
     if(user_name=="")
     {
       alert("please log");
     }
+    else
+    {
+      GetChat();
+    }
+    
+   
   }
   function SendChat()
   {
     var xmlhttp;
     var name;
-    var content=document.getElementById("chat_content").value;
+    var content=document.getElementById("chat_content");
+    var chat=content.value;
     if (window.XMLHttpRequest)
     {
       xmlhttp=new XMLHttpRequest();
@@ -121,11 +133,13 @@
     {
       if (xmlhttp.readyState==4 && xmlhttp.status==200)
       {
+        chat='';
       }
     }
     xmlhttp.open("POST","test.zz",true);
-    var str={"order":"chat0","name":user_name,"content":content};
+    var str={"order":"chat0","name":user_name,"content":chat};
     xmlhttp.send(JSON.stringify(str));
+    
   }
   function GetChat()
   {
@@ -133,6 +147,8 @@
     var name;
     var passwd;
     var email;
+    var div=document.getElementById("chat");
+    div.innerHTML="";
     if (window.XMLHttpRequest)
     {
       xmlhttp=new XMLHttpRequest();
@@ -145,14 +161,10 @@
     {
       if (xmlhttp.readyState==4 && xmlhttp.status==200)
       {
-        addChat(xmlhttp.responseText);
         var response=JSON.parse(xmlhttp.responseText);
-        var obj=response.text;
-        for(var i in obj)
+        for(var i in response)
           {
-            addChat("name:"+obj[i].name);
-            addChat("time:"+obj[i].time);
-            addChat("chat:"+obj[i].chat);
+            addChat(" "+response[i].name+" :"+response[i].time+"<br>chat:"+response[i].chat);
           }
 
       }
@@ -161,6 +173,7 @@
     var str={"order":"chat","name":user_name};
     xmlhttp.send(JSON.stringify(str));
   }
+
 
 </script>
 </body>
