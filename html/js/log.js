@@ -20,7 +20,7 @@ function sendPost(num)
             if(response.res==11)
             {
                 //
-                alert("用户名已经被注册！");
+                alert("your name had been registered");
             }
             else if(response.res==10)
             {
@@ -34,7 +34,7 @@ function sendPost(num)
             }
             else if(response.res==21)
             {
-                alert("用户名或密码错误！");
+                alert("name or password is error");
             }
             
 		}
