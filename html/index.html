@@ -19,6 +19,12 @@
     
 <!-- Animation CSS -->
 <link href="./assets/css/vendor/aos.css" rel="stylesheet"/>
+<style>
+	hc{
+		background-color: burlywood;
+		color: #E5EBF9;
+	}
+</style>
     
 </head>
     
@@ -27,7 +33,7 @@
 <!----------------------------------------------------------------------
 NAVBAR (remove topnav if you don't want changed nav background on scroll)
 ------------------------------------------------------------------------>
-<nav class="topnav navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+<nav class="topnav navbar navbar-expand-lg navbar-dark fixed-top">
 <div class="container-fluid">
 	<a class="navbar-brand" href="./index.html"><i class="fas fa-anchor mr-2"></i><strong>乐宠春</strong> App</a>
 	<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,26 +42,20 @@ NAVBAR (remove topnav if you don't want changed nav background on scroll)
 	<div class="navbar-collapse collapse" id="navbarColor02" style="">
 		<ul class="navbar-nav mr-auto d-flex align-items-center">
 			<li class="nav-item">
-			<a class="nav-link" href="./index.html">关于</a>
+			<a class="nav-link" href="./page.html">关于</a>
 			</li>
-			<li class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				账户</a>
-			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-				<a class="dropdown-item" href="./login.html">登录</a>
-				<a class="dropdown-item" href="./register.html">注册 </a>
-			</div>
-			</li>
-			<li class="nav-item">
-			<a class="nav-link" href="./docs.html">下载</a>
+			<li class="nav-item ">
+			<a class="nav-link" href="./blog.html">博客</a>
 			</li>
 		</ul>
 		<ul class="navbar-nav ml-auto d-flex align-items-center">
-			<li class="nav-item">
-			<span class="nav-link" href="#">
-			<a class="btn btn-info btn-round shadow-sm" href="#" data-toggle="modal" data-target="#modal_newsletter"><i class="fas fa-cloud-download-alt"></i> 下载 App <a href="#" class="downloadzip" class="hidden"></a>
-			</a>
-			</span>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					账户</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="./login.html">登录</a>
+					<a class="dropdown-item" href="./register1.html">注册 </a>
+				</div>
 			</li>
 		</ul>
 	</div>
@@ -64,29 +64,56 @@ NAVBAR (remove topnav if you don't want changed nav background on scroll)
 <!-- End Navbar -->
     
     
-<!-------------------------------------
-HEADER
---------------------------------------->
-<header>
-    <div class="jumbotron jumbotron-lg jumbotron-fluid mb-0 pb-3 bg-primary position-relative">
-        <div class="container-fluid text-white h-100">
-            <div class="d-lg-flex align-items-center justify-content-between text-center pl-lg-5">
-                <div class="col pt-4 pb-4">
-                    <h1 class="display-3">日历 <strong> & 宠物</strong> & 计时</h1>
-                    <h5 class="font-weight-light mb-4">免费下载 乐宠春 App <strong> Test 1.0 </strong> & <strong><i class="fab fa-sass fa-2x text-info"></i></strong></h5>
-                    <a href="#" class="btn btn-lg btn-outline-white btn-round">Learn more</a>
-                </div>
-                <div class="col align-self-bottom align-items-right text-right h-max-380 h-xl-560 position-relative z-index-1">
-                    <img src="assets/img/demo/fram.png" class="rounded img-fluid">
-                </div>
-            </div>
+
+
+<!-- Card Overlay -->
+<div class="card bg-dark overlay overlay-black text-white shadow-lg border-0">
+    <img class="card-img" src="./assets/img/demo/head1.jpg" alt="Card image">
+    <div class="card-img-overlay d-flex align-items-center text-center">
+        <div class="card-body">
+            <h3 class="card-title">欢迎</h3>
+            <p class="card-text text-muted">
+                 With supporting text below as a natural lead-in to additional content.
+            </p>
+            <a href="#" class="btn btn-info btn-round">了解更多</a>
         </div>
     </div>
-    <svg style="-webkit-transform:rotate(-180deg); -moz-transform:rotate(-180deg); -o-transform:rotate(-180deg); transform:rotate(-180deg); margin-top: -1px;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewbox="0 0 1440 126" style="enable-background:new 0 0 1440 126;" xml:space="preserve">
-    <path class="bg-primary" d="M685.6,38.8C418.7-11.1,170.2,9.9,0,30v96h1440V30C1252.7,52.2,1010,99.4,685.6,38.8z"/>
-    </svg>
-</header>
-<!--- END HEADER -->
+</div>
+<main class="container">
+
+
+<!--------------------------------------
+CAROUSEL
+--------------------------------------->
+<section class="pt-4 pb-5" data-aos="fade-up" id="example-carousel">
+	<h3 class="h5 mb-4 font-weight-bold">Carousel</h3>
+		<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+				<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+			</ol>
+			<div class="carousel-inner shadow-sm rounded">
+				<div class="carousel-item active">
+					<img class="d-block w-100" src="https://images.unsplash.com/photo-1475522003475-eb5f96f1f930?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="First slide">
+					<div class="carousel-caption d-none d-md-block">
+						<h5>Mission Beach, San Diego, United States by Matthew Hamilton</h5>
+					</div>
+				</div>
+				<div class="carousel-item">
+					<img class="d-block w-100" src="https://images.unsplash.com/photo-1521464302861-ce943915d1c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="Second slide">
+					<div class="carousel-caption d-none d-md-block">
+						<h5>Golden Gate Bridge, San Francisco, United States by Tim Foster</h5>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+
+</main>
+
 
 <!--------------------------------------
 FOOTER
@@ -106,39 +133,23 @@ FOOTER
 		</div>
 		<div class="col-6 col-md">
 			<h5 class="mb-4 text-white">Features</h5>
-			<ul class="list-unstyled text-small">
-				<li><a class="text-muted" href="#">Cool stuff</a></li>
-				<li><a class="text-muted" href="#">Random feature</a></li>
-				<li><a class="text-muted" href="#">Team feature</a></li>
-				<li><a class="text-muted" href="#">Stuff for developers</a></li>
-			</ul>
 		</div>
 		<div class="col-6 col-md">
 			<h5 class="mb-4 text-white">Resources</h5>
-			<ul class="list-unstyled text-small">
-				<li><a class="text-muted" href="#">Resource</a></li>
-				<li><a class="text-muted" href="#">Resource name</a></li>
-				<li><a class="text-muted" href="#">Another resource</a></li>
-				<li><a class="text-muted" href="#">Final resource</a></li>
-			</ul>
 		</div>
 		<div class="col-6 col-md">
 			<h5 class="mb-4 text-white">Utilities</h5>
-			<ul class="list-unstyled text-small">
+			<!--
+							<ul class="list-unstyled text-small">
 				<li><a class="text-muted" href="#">Business</a></li>
 				<li><a class="text-muted" href="#">Education</a></li>
 				<li><a class="text-muted" href="#">Government</a></li>
 				<li><a class="text-muted" href="#">Gaming</a></li>
 			</ul>
+			-->
 		</div>
 		<div class="col-6 col-md">
 			<h5 class="mb-4 text-white">About</h5>
-			<ul class="list-unstyled text-small">
-				<li><a class="text-muted" href="#">Team</a></li>
-				<li><a class="text-muted" href="#">Locations</a></li>
-				<li><a class="text-muted" href="#">Privacy</a></li>
-				<li><a class="text-muted" href="#">Terms</a></li>
-			</ul>
 		</div>
 	</div>
 </div>
