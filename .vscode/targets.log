@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Aug 20 02:02:35 2022
+# Make data base, printed on Sat Aug 20 20:59:47 2022
 
 # Variables
 
@@ -61,14 +61,13 @@ MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
 # environment
 XDG_DATA_DIRS = /usr/share/ubuntu:/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop:/var/lib/snapd/desktop
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:abstract=/tmp/dbus-nbuKNQ94ed
+DBUS_SESSION_BUS_ADDRESS = unix:abstract=/tmp/dbus-KHJcbmOZCC
 # environment
 CLUTTER_IM_MODULE = xim
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
 VSCODE_CWD = /home/thg
- 
 # environment
 XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session0
 # default
@@ -98,7 +97,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 3203
+GIO_LAUNCHED_DESKTOP_FILE_PID = 2315
 # automatic
 %F = $(notdir $%)
 # environment
@@ -198,7 +197,6 @@ MFLAGS = -pqrR
 # environment
 GDK_BACKEND = x11
 # automatic
- 
 +F = $(notdir $+)
 # environment
 GTK2_MODULES = overlay-scrollbar
@@ -211,7 +209,7 @@ DEFAULTS_PATH = /usr/share/gconf/ubuntu.default.path
 # default
 MAKEFILES := 
 # environment
-UPSTART_SESSION = unix:abstract=/com/ubuntu/upstart-session/1000/1740
+UPSTART_SESSION = unix:abstract=/com/ubuntu/upstart-session/1000/1652
 # automatic
 <F = $(notdir $<)
 # environment
@@ -233,7 +231,7 @@ CHROME_DESKTOP = code-url-handler.desktop
 # environment
 LANG = C
 # environment
-VSCODE_PID = 3203
+VSCODE_PID = 2315
 # variable set hash-table stats:
 # Load=110/1024=11%, Rehash=0, Collisions=9/135=7%
 
@@ -276,13 +274,13 @@ server: server.cpp handle.cpp mydata.cpp
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
- 
 #  Last modified 2022-08-19 02:03:39.505182895
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 .DEFAULT:
+ 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -313,6 +311,6 @@ handle.cpp:
 # strcache performance: lookups = 31 / hit rate = 29%
 # hash-table stats:
 # Load=22/8192=0%, Rehash=0, Collisions=1/31=3%
-# Finished Make data base on Sat Aug 20 02:02:35 2022
+# Finished Make data base on Sat Aug 20 20:59:47 2022
 
  
